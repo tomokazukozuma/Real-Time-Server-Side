@@ -1,0 +1,14 @@
+{
+    "port": 3001,
+    "wsGroupUrls": [
+        "http://localhost"
+    ],
+    "logger": {
+        "appenders": [
+            {
+                "category": "access",
+                "type": "console"
+            }
+        ]
+    }
+}

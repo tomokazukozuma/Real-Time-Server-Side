@@ -1,0 +1,32 @@
+{
+  "name": "Server-Side-Node.js-Real-Time-Engine",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start:server": "WsGroup=ws01 babel-node app.js",
+    "start:cluster": "WsGroup=ws01 babel-node cluster.js",
+    "start:client": "babel-node client/app.js",
+    "lint": "eslint . --ext .js",
+    "test": "NODE_ENV=test mocha test --recursive --compilers js:babel-register "
+  },
+  "dependencies": {
+    "commander": "2.9.0",
+    "config": "1.25.1",
+    "connect-redis": "3.2.0",
+    "cookie-parser": "1.4.3",
+    "express": "4.15.2",
+    "express-session": "1.15.2",
+    "log4js": "1.1.1",
+    "socket.io": "1.7.3",
+    "socket.io-client": "1.7.3",
+    "socket.io-redis": "4.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.24.0",
+    "babel-plugin-root-import": "5.1.0",
+    "babel-preset-env": "1.2.2",
+    "eslint": "3.18.0",
+    "expect.js": "0.3.1",
+    "mocha": "3.2.0"
+  }
+}

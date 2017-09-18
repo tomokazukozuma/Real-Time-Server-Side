@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.1" jmeter="3.1 r1770033">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="trinity_loadtest" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="ユーザー定義変数" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath">/usr/local/Cellar/jmeter/3.1/libexec/lib/ext/JMeterWebSocketSampler-1.0.2-SNAPSHOT.jar</stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="サーバー情報定義（local）" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="NODE_DOMAIN" elementType="Argument">
+            <stringProp name="Argument.name">NODE_DOMAIN</stringProp>
+            <stringProp name="Argument.value">localhost</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="NODE_PROTOCOL" elementType="Argument">
+            <stringProp name="Argument.name">NODE_PROTOCOL</stringProp>
+            <stringProp name="Argument.value">http</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="NODE_PORT" elementType="Argument">
+            <stringProp name="Argument.name">NODE_PORT</stringProp>
+            <stringProp name="Argument.value">3001</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="NODE_WEBSOCKET_PROTOCOL" elementType="Argument">
+            <stringProp name="Argument.name">NODE_WEBSOCKET_PROTOCOL</stringProp>
+            <stringProp name="Argument.value">ws</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="NODE_THREAD" elementType="Argument">
+            <stringProp name="Argument.name">NODE_THREAD</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="NODE_RAMPUP" elementType="Argument">
+            <stringProp name="Argument.name">NODE_RAMPUP</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="NODE_THREAD_LOOP_COUNT" elementType="Argument">
+            <stringProp name="Argument.name">NODE_THREAD_LOOP_COUNT</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WEBSOCKET_CONNECTION_TIMEOUT" elementType="Argument">
+            <stringProp name="Argument.name">WEBSOCKET_CONNECTION_TIMEOUT</stringProp>
+            <stringProp name="Argument.value">1000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WEBSOCKET_RESPONSE_TIMEOUT" elementType="Argument">
+            <stringProp name="Argument.name">WEBSOCKET_RESPONSE_TIMEOUT</stringProp>
+            <stringProp name="Argument.value">1000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_ID" elementType="Argument">
+            <stringProp name="Argument.name">USER_ID</stringProp>
+            <stringProp name="Argument.value">1000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Test Fragment" enabled="true"/>
+      <hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="connect /" enabled="true"/>
+        <hashTree>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="websocket connect" enabled="true">
+            <stringProp name="serverAddress">${NODE_DOMAIN}</stringProp>
+            <stringProp name="serverPort">3001</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">${NODE_WEBSOCKET_PROTOCOL}</stringProp>
+            <stringProp name="contextPath">socket.io/?EIO=3&amp;transport=websocket</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">40/</stringProp>
+            <stringProp name="connectionTimeout">${WEBSOCKET_CONNECTION_TIMEOUT}</stringProp>
+            <stringProp name="responseTimeout">${WEBSOCKET_RESPONSE_TIMEOUT}</stringProp>
+            <boolProp name="ignoreSslErrors">false</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">${USER_ID}</stringProp>
+            <stringProp name="responsePattern">40</stringProp>
+            <stringProp name="closeConncectionPattern">1.*</stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">5</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="ユーザー定義変数" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="SOCKET_ID抽出" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">SOCKET_ID</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;sid&quot;:&quot;(.*?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="connect /gvg" enabled="true"/>
+        <hashTree>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="websocket connect" enabled="true">
+            <stringProp name="serverAddress">${NODE_DOMAIN}</stringProp>
+            <stringProp name="serverPort">3001</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">${NODE_WEBSOCKET_PROTOCOL}</stringProp>
+            <stringProp name="contextPath">socket.io/?EIO=3&amp;transport=websocket</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">40/gvg</stringProp>
+            <stringProp name="connectionTimeout">${WEBSOCKET_CONNECTION_TIMEOUT}</stringProp>
+            <stringProp name="responseTimeout">${WEBSOCKET_RESPONSE_TIMEOUT}</stringProp>
+            <boolProp name="ignoreSslErrors">false</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">${USER_ID}</stringProp>
+            <stringProp name="responsePattern">40\/gvg</stringProp>
+            <stringProp name="closeConncectionPattern">1.*</stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">5</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="ユーザー定義変数" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="event /gvg room_member" enabled="true"/>
+        <hashTree>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="websocket connect" enabled="true">
+            <stringProp name="serverAddress">${NODE_DOMAIN}</stringProp>
+            <stringProp name="serverPort">3001</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">${NODE_WEBSOCKET_PROTOCOL}</stringProp>
+            <stringProp name="contextPath">socket.io/?EIO=3&amp;transport=websocket</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">42/gvg,[&quot;room_member&quot;,&quot;hello&quot;]</stringProp>
+            <stringProp name="connectionTimeout">${WEBSOCKET_CONNECTION_TIMEOUT}</stringProp>
+            <stringProp name="responseTimeout">${WEBSOCKET_RESPONSE_TIMEOUT}</stringProp>
+            <boolProp name="ignoreSslErrors">false</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">${USER_ID}</stringProp>
+            <stringProp name="responsePattern"></stringProp>
+            <stringProp name="closeConncectionPattern">1.*</stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">5</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="ユーザー定義変数" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="event /gvg room_join" enabled="true"/>
+        <hashTree>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="websocket room_join" enabled="true">
+            <stringProp name="serverAddress">${NODE_DOMAIN}</stringProp>
+            <stringProp name="serverPort">3001</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">${NODE_WEBSOCKET_PROTOCOL}</stringProp>
+            <stringProp name="contextPath">socket.io/?EIO=3&amp;transport=websocket</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">42/gvg,[&quot;room_join&quot;,{&quot;roomId&quot;:1}]</stringProp>
+            <stringProp name="connectionTimeout">${WEBSOCKET_CONNECTION_TIMEOUT}</stringProp>
+            <stringProp name="responseTimeout">${WEBSOCKET_RESPONSE_TIMEOUT}</stringProp>
+            <boolProp name="ignoreSslErrors">false</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">${USER_ID}</stringProp>
+            <stringProp name="responsePattern">42\/gvg.*</stringProp>
+            <stringProp name="closeConncectionPattern">1.*</stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">5</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="ユーザー定義変数" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree>
+            <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="JSR223 Listener" enabled="true">
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">var responseData = sampleResult.getResponseDataAsString();
+var messageList = new String(responseData).split(/\[Message [0-9]+\]/); // いらない文字列を排除
+messageList.shift(); //先頭が空文字列のため排除
+//log.info(messageList);
+//log.info(&apos;0:&apos; + messageList[0]); // sid情報 0{&quot;sid&quot;:&quot;kPHKRYk9_2xinY88AABM&quot;,&quot;upgrades&quot;:[],&quot;pingInterval&quot;:25000,&quot;pingTimeout&quot;:60000}
+//log.info(&apos;1:&apos; + messageList[1]); // /への接続完了通知 40
+//log.info(&apos;2:&apos; + messageList[2]); // /gvgへの接続完了通知 40/gvg
+//log.info(&apos;3:&apos; + messageList[3]); // サーバーからのroom_memberメッセージ 40/gvg[******]
+
+messageList.forEach(function(message, index) {
+	if (message.match(/(42).*/)) {
+		message = JSON.parse(message.trim().replace(/42\/gvg,/, &apos;&apos;));
+		log.info(&apos;message:&apos; + message);
+		log.info(&apos;message[0]:&apos; + message[0]);
+		log.info(&apos;message[1]:&apos; + message[1]);
+	}
+});
+</stringProp>
+              <stringProp name="scriptLanguage">javascript</stringProp>
+            </JSR223Listener>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Node socket.io通信テスト" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="ループコントローラ" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1490671688000</longProp>
+        <longProp name="ThreadGroup.end_time">1490671688000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="connect /gvg" enabled="true">
+          <collectionProp name="ModuleController.node_path">
+            <stringProp name="1234843941">ワークベンチ</stringProp>
+            <stringProp name="-474219892">trinity_loadtest</stringProp>
+            <stringProp name="170071582">Test Fragment</stringProp>
+            <stringProp name="1853777983">connect /gvg</stringProp>
+          </collectionProp>
+        </ModuleController>
+        <hashTree/>
+        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="/gvg room_join" enabled="true">
+          <collectionProp name="ModuleController.node_path">
+            <stringProp name="1234843941">ワークベンチ</stringProp>
+            <stringProp name="-474219892">trinity_loadtest</stringProp>
+            <stringProp name="170071582">Test Fragment</stringProp>
+            <stringProp name="55861181">event /gvg room_join</stringProp>
+          </collectionProp>
+        </ModuleController>
+        <hashTree/>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="room待機中" enabled="true">
+          <stringProp name="WhileController.condition">${__javaScript(vars.get(&apos;isLoop&apos;))}</stringProp>
+        </WhileController>
+        <hashTree>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="room waiting" enabled="true">
+            <stringProp name="serverAddress">${NODE_DOMAIN}</stringProp>
+            <stringProp name="serverPort">3001</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">${NODE_WEBSOCKET_PROTOCOL}</stringProp>
+            <stringProp name="contextPath">socket.io/?EIO=3&amp;transport=websocket</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">2</stringProp>
+            <stringProp name="connectionTimeout">${WEBSOCKET_CONNECTION_TIMEOUT}</stringProp>
+            <stringProp name="responseTimeout">${WEBSOCKET_RESPONSE_TIMEOUT}</stringProp>
+            <boolProp name="ignoreSslErrors">false</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">${USER_ID}</stringProp>
+            <stringProp name="responsePattern">3</stringProp>
+            <stringProp name="closeConncectionPattern">1.*</stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="ユーザー定義変数" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree>
+            <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="JSR223 Listener" enabled="true">
+              <stringProp name="scriptLanguage">javascript</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="script">var responseData = sampleResult.getResponseDataAsString();
+var messageList = new String(responseData).split(/\[Message [0-9]+\]/); // いらない文字列を排除
+messageList.shift(); //先頭が空文字列のため排除
+//log.info(messageList);
+//log.info(&apos;0:&apos; + messageList[0]); // sid情報 0{&quot;sid&quot;:&quot;kPHKRYk9_2xinY88AABM&quot;,&quot;upgrades&quot;:[],&quot;pingInterval&quot;:25000,&quot;pingTimeout&quot;:60000}
+//log.info(&apos;1:&apos; + messageList[1]); // /への接続完了通知 40
+//log.info(&apos;2:&apos; + messageList[2]); // /gvgへの接続完了通知 40/gvg
+//log.info(&apos;3:&apos; + messageList[3]); // サーバーからのroom_memberメッセージ 40/gvg[******]
+
+messageList.forEach(function(message, index) {
+	if (message.match(/(42).*/)) {
+		message = JSON.parse(message.trim().replace(/42\/gvg,/, &apos;&apos;));
+		log.info(&apos;message:&apos; + message);
+		log.info(&apos;message[0]:&apos; + message[0]); // イベント名
+		log.info(&apos;message[1]:&apos; + message[1]); // サーバーから送られて来たデータ
+		if (message[0] == &apos;room_member&apos; &amp;&amp; message[1].length &gt; 2) {
+			vars.put(&apos;isLoop&apos;, false);
+		}
+	}
+});
+</stringProp>
+            </JSR223Listener>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="GvG中" enabled="false">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="TestPlan.comments">回数はターン数</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </LoopController>
+        <hashTree>
+          <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="GvG action" enabled="true">
+            <stringProp name="serverAddress">${NODE_DOMAIN}</stringProp>
+            <stringProp name="serverPort">3001</stringProp>
+            <stringProp name="implementation">RFC6455 (v13)</stringProp>
+            <stringProp name="protocol">${NODE_WEBSOCKET_PROTOCOL}</stringProp>
+            <stringProp name="contextPath">socket.io/?EIO=3&amp;transport=websocket</stringProp>
+            <stringProp name="contentEncoding">UTF-8</stringProp>
+            <stringProp name="requestPayload">42/gvg,[&quot;action&quot;,{&quot;roomId&quot;:1,&quot;skillId&quot;:1}]</stringProp>
+            <stringProp name="connectionTimeout">${WEBSOCKET_CONNECTION_TIMEOUT}</stringProp>
+            <stringProp name="responseTimeout">5000</stringProp>
+            <boolProp name="ignoreSslErrors">false</boolProp>
+            <boolProp name="streamingConnection">true</boolProp>
+            <stringProp name="connectionId">${USER_ID}</stringProp>
+            <stringProp name="responsePattern">42/gvg.*</stringProp>
+            <stringProp name="closeConncectionPattern">1.*</stringProp>
+            <stringProp name="proxyAddress"></stringProp>
+            <stringProp name="proxyPassword"></stringProp>
+            <stringProp name="proxyPort"></stringProp>
+            <stringProp name="proxyUsername"></stringProp>
+            <stringProp name="messageBacklog">3</stringProp>
+            <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="ユーザー定義変数" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+          <hashTree/>
+          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="GVG action waiting" enabled="true">
+            <stringProp name="WhileController.condition">${__javaScript(vars.get(&apos;isActionLoop&apos;))}</stringProp>
+          </WhileController>
+          <hashTree>
+            <JMeter.plugins.functional.samplers.websocket.WebSocketSampler guiclass="JMeter.plugins.functional.samplers.websocket.WebSocketSamplerGui" testclass="JMeter.plugins.functional.samplers.websocket.WebSocketSampler" testname="GvG action waiting" enabled="true">
+              <stringProp name="serverAddress">${NODE_DOMAIN}</stringProp>
+              <stringProp name="serverPort">3001</stringProp>
+              <stringProp name="implementation">RFC6455 (v13)</stringProp>
+              <stringProp name="protocol">${NODE_WEBSOCKET_PROTOCOL}</stringProp>
+              <stringProp name="contextPath">socket.io/?EIO=3&amp;transport=websocket</stringProp>
+              <stringProp name="contentEncoding">UTF-8</stringProp>
+              <stringProp name="requestPayload">2</stringProp>
+              <stringProp name="connectionTimeout">${WEBSOCKET_CONNECTION_TIMEOUT}</stringProp>
+              <stringProp name="responseTimeout">${WEBSOCKET_RESPONSE_TIMEOUT}</stringProp>
+              <boolProp name="ignoreSslErrors">false</boolProp>
+              <boolProp name="streamingConnection">true</boolProp>
+              <stringProp name="connectionId">${USER_ID}</stringProp>
+              <stringProp name="responsePattern">3</stringProp>
+              <stringProp name="closeConncectionPattern">1.*</stringProp>
+              <stringProp name="proxyAddress"></stringProp>
+              <stringProp name="proxyPassword"></stringProp>
+              <stringProp name="proxyPort"></stringProp>
+              <stringProp name="proxyUsername"></stringProp>
+              <stringProp name="messageBacklog">3</stringProp>
+              <elementProp name="queryStringParameters" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="ユーザー定義変数" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </JMeter.plugins.functional.samplers.websocket.WebSocketSampler>
+            <hashTree>
+              <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="JSR223 Listener" enabled="true">
+                <stringProp name="scriptLanguage">javascript</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey"></stringProp>
+                <stringProp name="script">var actionCount = Number(vars.get(&apos;actionCount&apos;)) || 1;
+log.info(&apos;actionCount: &apos; + actionCount);
+
+var responseData = sampleResult.getResponseDataAsString();
+var messageList = new String(responseData).split(/\[Message [0-9]+\]/); // いらない文字列を排除
+messageList.shift(); //先頭が空文字列のため排除
+log.info(&apos;messageList: &apos; + JSON.stringify(messageList));
+messageList.forEach(function(message, index) {
+	// イベントだけ処理
+	if (message.match(/(42).*/)) {
+		// イベント名とデータ以外を排除
+		message = JSON.parse(message.trim().replace(/42\/gvg,/, &apos;&apos;));
+		log.info(&apos;message:&apos; + message);
+		log.info(&apos;message[0]:&apos; + message[0]); // イベント名
+		log.info(&apos;message[1]:&apos; + message[1]); // サーバーから送られて来たデータ
+		// イベントがactionだったらインクリメント
+		if (message[0] === &apos;action&apos;) {
+			actionCount += 1;
+			vars.put(&apos;actionCount&apos;, actionCount);
+		}
+	}
+});
+
+if (actionCount &gt; 5) {
+	log.info(&apos;------ end ------&apos;)
+	vars.put(&apos;isActionLoop&apos;, false);
+}
+</stringProp>
+              </JSR223Listener>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="結果をツリーで表示" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

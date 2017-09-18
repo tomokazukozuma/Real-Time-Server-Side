@@ -1,0 +1,49 @@
+{
+    "wsServer": {
+        "port": 3001,
+        "transports": ["websocket"],
+        "eventsDirPath": "/test/events"
+    },
+    "cluster": {
+        "disconnectTimeout": 5000,
+        "exec": "app.js"
+    },
+    "datastore": {
+        "redisWsServers": [
+            {
+                "wsGroup": "ws01",
+                "host": "localhost",
+                "port": 6379
+            }
+        ],
+        "redisSessionServer": {
+            "host": "localhost",
+            "port": 6379
+        }
+    },
+    "logger": {
+        "master": {
+            "appenders": [
+                {
+                    "type": "clustered",
+                    "appenders": [
+                        {
+                            "category": "access",
+                            "type": "console"
+                        }
+                    ]
+                }
+            ],
+            "levels": {
+                "access": "ERROR"
+            }
+        },
+        "worker": {
+            "appenders": [
+                {
+                    "type": "clustered"
+                }
+            ]
+        }
+    }
+}
