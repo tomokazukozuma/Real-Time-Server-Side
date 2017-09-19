@@ -1,30 +1,30 @@
 # Real-Time-Server-Side
-socket.ioを使用したリアルタイムエンジンです。
+It is a real-time engine using socket.io.
 
-#### ローカルでの起動方法
-1. インストール
+#### How to setup
+1. Install
 ```bash
 git clone https://github.com/tomokazukozuma/Real-Time-Server-Side.git
 cd trinity-ServerNodeJS
 npm install
 ```
-2. 起動
+2. Start Up
 
-コマンドを実行する前にredisサーバーを6379ポートで立ち上げておく
+Before executing the command, start the redis server with 6379 port.
 
-clusterで起動
+Start up with cluster
 ```bash
 npm run start:cluster
 ```
 
-1プロセスで起動（テスト用）
+Start up in one process
 ```bash
 npm run start:server
 ```
 
-オプション付きで起動する場合
+When starting with option
 
-事前にbabel-cliをグローバルにインストール
+Install babel-cli globally in advance.
 ```bash
 npm install -g babel-cli
 ```
@@ -33,7 +33,7 @@ npm install -g babel-cli
 WsGroup=ws01 babel-node app.js --port 3001
 ```
 
-#### テストコマンド
+#### Run Test
 ```bash
 npm run test
 ```
@@ -42,8 +42,8 @@ npm run test
 npm run lint
 ```
 
-#### テスト用接続クライアント
-サーバー側を立ち上げたあと下記コマンドを実行
+#### Client for Testing
+After launching the server side, execute the following command.
 ```bash
 npm run start:client
 
