@@ -1,12 +1,12 @@
 # Client
-Real-Time-Server-Sideのテスト用クライアントソースコードです。
+It is a client for testing Real - Time - Server - Side.
 
-#### 実行方法
-サーバー側を立ち上げたあと下記コマンドを実行
+#### How to Execution
+After launching the server side, execute the following command.
 ```bash
 npm run start:client
 
 or
-# port:3001に接続し、roomId:1にjoinする
+# Connect to port: 3001 and join to roomId: 1
 babel-node client/app.js --port 3001 --room 1
 ```
