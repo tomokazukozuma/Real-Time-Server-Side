@@ -5,7 +5,7 @@ It is a real-time engine using socket.io.
 1. Install
 ```bash
 git clone https://github.com/tomokazukozuma/Real-Time-Server-Side.git
-cd trinity-ServerNodeJS
+cd Real-Time-Server-Side
 npm install
 ```
 2. Start Up
