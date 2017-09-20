@@ -13,7 +13,7 @@
 exports.c2s_join = (io, socket, data) => {
     socket.join(data.roomName);
 
-    // .nspをつけると自分自身にもイベントを送信できる
+    // With .nsp you can also send an event to yourself
     socket.nsp.to(data.roomName).emit('s2c_join', data);
 };
 
@@ -25,7 +25,7 @@ exports.c2s_join = (io, socket, data) => {
  * @param {Object} data
  */
 exports.c2s_msg = (io, socket, data) => {
-    // .nspをつけると自分自身にもイベントを送信できる
+    // With .nsp you can also send an event to yourself
     socket.nsp.to(data.roomName).emit('s2c_msg', data);
 };
 
@@ -37,7 +37,7 @@ exports.c2s_msg = (io, socket, data) => {
  * @param {Object} data
  */
 exports.leave = (io, socket, data) => {
-    // .nspをつけると自分自身にもイベントを送信できる
+    // With .nsp you can also send an event to yourself
     socket.nsp.to(data.roomName).emit('s2c_leave', data);
     socket.leave(data.roomName);
 };

@@ -16,7 +16,7 @@ import log4js from 'log4js';
 export default class Logger {
 
 	/**
-     * コンストラクタ
+     * Constructor
      *
      * @param {Object} socket
      */
@@ -27,7 +27,7 @@ export default class Logger {
     }
 
     /**
-     * アクセスログを生成
+     * Generate access log.
      *
      * @param {string} event
      * @param {Object} data

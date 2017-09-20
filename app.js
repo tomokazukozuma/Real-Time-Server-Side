@@ -48,7 +48,7 @@ const wsServer = new WsServer(server, {
     transports: wsServerConfig.transports
 });
 
-// redisの設定はPub/Sub方式の場合のみ使用
+// Redis setting is used only for Pub / Sub.s
 const redisWsServer = WsServer.getRedisWsServer(config.get('datastore.redisWsServers'), process.env['WsGroup']);
 wsServer.setRedisAdapter({
     host: redisWsServer.host,
@@ -57,7 +57,7 @@ wsServer.setRedisAdapter({
 
 wsServer.setSocketMiddleware(cookieParser, '/');
 wsServer.setSocketMiddleware(session, '/');
-// TODO 認証が必要な場合使用
+// Used when authentication is required.
 // wsServer.setSocketMiddleware(authentication, '/');
 
 fs.readdirSync(process.cwd() + wsServerConfig.eventsDirPath)

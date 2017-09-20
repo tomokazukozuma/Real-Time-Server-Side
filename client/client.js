@@ -14,7 +14,7 @@ import Logger from '~/client/lib/util/logger';
 export default class Client {
 
     /**
-     * コンストラクタ socket.ioインスタンスを生成
+     * Constructor
      *
      * @param {Object} settings socket.ioのoptions
      */
@@ -29,9 +29,9 @@ export default class Client {
     }
 
     /**
-     * イベントを設定する
+     * Set Socket.IO event.
      *
-     * @param {string} eventsDirPath socket.ioのイベントを指定しているディレクトリパス
+     * @param {string} eventsDirPath Directory path that specifies event of Socket.IO.
      */
     setEvent(eventsDirPath) {
         const logger = new Logger(this.socket);
